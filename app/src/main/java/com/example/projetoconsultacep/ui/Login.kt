@@ -1,13 +1,16 @@
-package com.example.projetoconsultacep
+package com.example.projetoconsultacep.ui
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import com.example.projetoconsultacep.R
+import com.example.projetoconsultacep.SingletonDataBase
+import com.example.projetoconsultacep.model.User
+import com.example.projetoconsultacep.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -18,9 +21,12 @@ class Login : AppCompatActivity() {
 
     lateinit var btnLogin: Button
 
+    lateinit var viewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
 
         initComponents()
 
@@ -40,16 +46,19 @@ class Login : AppCompatActivity() {
         }
     }
 
-    fun initComponents() {
+    private fun initComponents() {
+
+        viewModel = LoginViewModel()
+
         login = findViewById(R.id.tv_usuario)
         password = findViewById(R.id.tv_senha)
 
         btnLogin = findViewById(R.id.btn_login)
     }
 
-    fun validUser(user: String): Boolean {
+    private fun validUser(user: String): Boolean {
 
-        val valid = SingletonDataBase.instance.helper?.searchUser(user) ?: return false
+        val valid = viewModel.getLogin(user)
 
         if (valid.isEmpty()) {
             return false
@@ -57,10 +66,9 @@ class Login : AppCompatActivity() {
         return true
     }
 
-    fun hideKeyboard(view: View) {
+    private fun hideKeyboard(view: View) {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
-
 }

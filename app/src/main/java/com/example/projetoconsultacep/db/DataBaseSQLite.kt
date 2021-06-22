@@ -1,8 +1,9 @@
-package com.example.projetoconsultacep
+package com.example.projetoconsultacep.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.projetoconsultacep.model.User
 import java.sql.SQLException
 
 class DataBaseSQLite(

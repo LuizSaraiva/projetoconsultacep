@@ -10,7 +10,7 @@
         android:name=".SingletonDataBase"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projetoconsultacep">
-        <activity android:name=".Login">
+        <activity android:name=".ui.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
