@@ -4,4 +4,7 @@
     <string name="senha">Senha</string>
     <string name="login">Login</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="preencha_todos_campos">Preencha todos os campos</string>
+    <string name="usuario_ja_cadastrado">Usuario ja cadastro</string>
+    <string name="cadastro_realizado">Cadastro realizado</string>
 </resources>

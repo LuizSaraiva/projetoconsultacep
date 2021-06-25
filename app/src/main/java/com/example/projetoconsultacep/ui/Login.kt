@@ -1,6 +1,8 @@
 package com.example.projetoconsultacep.ui
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,6 +22,7 @@ class Login : AppCompatActivity() {
     lateinit var password: EditText
 
     lateinit var btnLogin: Button
+    lateinit var btnCadastro: Button
 
     lateinit var viewModel: LoginViewModel
 
@@ -44,6 +47,11 @@ class Login : AppCompatActivity() {
                 Snackbar.make(it, "Usuario não cadastrado", Snackbar.LENGTH_LONG).show()
             }
         }
+
+        btnCadastro.setOnClickListener{
+            startActivity(Intent(this,Cadastro::class.java))
+        }
+
     }
 
     private fun initComponents() {
@@ -54,6 +62,7 @@ class Login : AppCompatActivity() {
         password = findViewById(R.id.tv_senha)
 
         btnLogin = findViewById(R.id.btn_login)
+        btnCadastro = findViewById(R.id.btn_cadastrar)
     }
 
     private fun validUser(user: String): Boolean {
@@ -71,4 +80,5 @@ class Login : AppCompatActivity() {
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
 }

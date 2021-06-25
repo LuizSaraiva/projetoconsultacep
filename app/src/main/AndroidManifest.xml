@@ -3,13 +3,14 @@
     package="com.example.projetoconsultacep">
 
     <application
+        android:name=".SingletonDataBase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:name=".SingletonDataBase"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projetoconsultacep">
+        <activity android:name=".ui.Cadastro"></activity>
         <activity android:name=".ui.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

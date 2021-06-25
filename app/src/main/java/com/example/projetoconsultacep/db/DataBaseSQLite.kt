@@ -1,5 +1,6 @@
 package com.example.projetoconsultacep.db
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -69,4 +70,21 @@ class DataBaseSQLite(
         }
         return list
     }
+
+    fun insertUser(user: User) {
+        val db = writableDatabase
+
+        var contentValue = ContentValues()
+        contentValue.put(COLUMN_NAME, user.name)
+        contentValue.put(COLUMN_PASSWORD, user.password)
+
+        try {
+            db.insert(TABLE_NAME_USER, null, contentValue)
+        } catch (ex: SQLException) {
+            ex.printStackTrace()
+        } finally {
+            db.close()
+        }
+    }
+
 }
