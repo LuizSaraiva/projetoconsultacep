@@ -32,6 +32,7 @@ class Login : AppCompatActivity() {
 
 
         initComponents()
+        getValueShared()
 
         btnLogin.setOnClickListener {
 
@@ -79,6 +80,12 @@ class Login : AppCompatActivity() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun getValueShared() {
+        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
+        login.setText(sharedPreferences.getString("user_register", ""))
+        password.setText(sharedPreferences.getString("password_register", ""))
     }
 
 }
