@@ -1,4 +1,4 @@
-package com.example.projetoconsultacep
+package com.example.projetoconsultacep.model
 
 class User(
     val name: String,

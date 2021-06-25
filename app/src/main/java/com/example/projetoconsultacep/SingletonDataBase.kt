@@ -1,6 +1,7 @@
 package com.example.projetoconsultacep
 
 import android.app.Application
+import com.example.projetoconsultacep.db.DataBaseSQLite
 
 class SingletonDataBase : Application() {
 
