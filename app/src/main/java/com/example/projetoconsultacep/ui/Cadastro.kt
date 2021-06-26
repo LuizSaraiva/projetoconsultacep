@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.example.projetoconsultacep.R
 import com.example.projetoconsultacep.model.User
 import com.example.projetoconsultacep.viewmodel.RegisterViewModel
@@ -19,6 +20,7 @@ class Cadastro : AppCompatActivity() {
 
     lateinit var user: EditText
     lateinit var password: EditText
+    lateinit var toolbar: Toolbar
 
     lateinit var btnRegister: Button
 
@@ -64,10 +66,21 @@ class Cadastro : AppCompatActivity() {
 
         user = ed_user
         password = ed_password
-
+        toolbar = toolbarCad
         btnRegister = btn_register
 
         viewModel = RegisterViewModel()
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
     }
 
     private fun redirect() {
