@@ -9,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import com.example.projetoconsultacep.HelperLogin
 import com.example.projetoconsultacep.R
 import com.example.projetoconsultacep.SingletonDataBase
 import com.example.projetoconsultacep.model.User
@@ -32,7 +33,10 @@ class Login : AppCompatActivity() {
 
 
         initComponents()
-        getValueShared()
+        HelperLogin().getPreferencesLogin(this).let {
+            login.setText(it.name)
+            password.setText(it.password)
+        }
 
         btnLogin.setOnClickListener {
 
@@ -49,8 +53,8 @@ class Login : AppCompatActivity() {
             }
         }
 
-        btnCadastro.setOnClickListener{
-            startActivity(Intent(this,Cadastro::class.java))
+        btnCadastro.setOnClickListener {
+            startActivity(Intent(this, Cadastro::class.java))
         }
 
     }
@@ -80,12 +84,6 @@ class Login : AppCompatActivity() {
         val inputMethodManager =
             getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-    private fun getValueShared() {
-        val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-        login.setText(sharedPreferences.getString("user_register", ""))
-        password.setText(sharedPreferences.getString("password_register", ""))
     }
 
 }

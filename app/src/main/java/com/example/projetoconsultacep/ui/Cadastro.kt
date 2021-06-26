@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.example.projetoconsultacep.HelperLogin
 import com.example.projetoconsultacep.R
 import com.example.projetoconsultacep.model.User
 import com.example.projetoconsultacep.viewmodel.RegisterViewModel
@@ -49,12 +50,7 @@ class Cadastro : AppCompatActivity() {
                     Toast.makeText(this, R.string.cadastro_realizado, Toast.LENGTH_LONG).show()
                     hideKeyboard(it)
 
-                    val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-                    sharedPreferences.edit().let { shared ->
-                        shared.putString("user_register", userRegister.name)
-                        shared.putString("password_register", userRegister.password)
-                        shared.apply()
-                    }
+                    HelperLogin().setPreferencesLogin(this,userRegister)
                     redirect()
                 }
 
