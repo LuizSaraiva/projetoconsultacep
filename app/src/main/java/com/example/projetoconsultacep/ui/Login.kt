@@ -31,6 +31,10 @@ class Login : AppCompatActivity() {
 
     lateinit var viewModel: LoginViewModel
 
+    companion object{
+        const val NAME_EXTRA = "name"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -49,8 +53,9 @@ class Login : AppCompatActivity() {
 
             if (validUser(userLogin.name)) {
 
-                //Intent
-
+                val intent = Intent(this, AreaLogada::class.java)
+                intent.putExtra(NAME_EXTRA,userLogin.name)
+                startActivity(intent)
             } else {
                 Snackbar.make(it, "Usuario não cadastrado", Snackbar.LENGTH_LONG).show()
             }
