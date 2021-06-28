@@ -7,4 +7,8 @@
     <string name="preencha_todos_campos">Preencha todos os campos</string>
     <string name="usuario_ja_cadastrado">Usuario ja cadastro</string>
     <string name="cadastro_realizado">Cadastro realizado</string>
+    <string name="voltar">Voltar</string>
+    <string name="consultar_cep">Consultar CEP</string>
+    <string name="bem_vindo_a">Bem vindo(a):</string>
+    <string name="sair">Sair</string>
 </resources>

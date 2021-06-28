@@ -10,6 +10,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import com.example.projetoconsultacep.HelperLogin
 import com.example.projetoconsultacep.R
 import com.example.projetoconsultacep.model.User
 import com.example.projetoconsultacep.viewmodel.RegisterViewModel
@@ -19,6 +21,7 @@ class Cadastro : AppCompatActivity() {
 
     lateinit var user: EditText
     lateinit var password: EditText
+    lateinit var toolbar: Toolbar
 
     lateinit var btnRegister: Button
 
@@ -47,12 +50,7 @@ class Cadastro : AppCompatActivity() {
                     Toast.makeText(this, R.string.cadastro_realizado, Toast.LENGTH_LONG).show()
                     hideKeyboard(it)
 
-                    val sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE)
-                    sharedPreferences.edit().let { shared ->
-                        shared.putString("user_register", userRegister.name)
-                        shared.putString("password_register", userRegister.password)
-                        shared.apply()
-                    }
+                    HelperLogin().setPreferencesLogin(this,userRegister)
                     redirect()
                 }
 
@@ -64,10 +62,21 @@ class Cadastro : AppCompatActivity() {
 
         user = ed_user
         password = ed_password
-
+        toolbar = toolbarCad
         btnRegister = btn_register
 
         viewModel = RegisterViewModel()
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+        }
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
     }
 
     private fun redirect() {
