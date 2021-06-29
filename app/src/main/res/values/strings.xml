@@ -11,4 +11,10 @@
     <string name="consultar_cep">Consultar CEP</string>
     <string name="bem_vindo_a">Bem vindo(a):</string>
     <string name="sair">Sair</string>
+    <string name="usuariosenhainvalido">Usuario ou senha invalido!</string>
+    <string name="consultar">Consultar</string>
+    <string name="tx_logradouro">Logradouro:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="ddd">DDD:</string>
 </resources>

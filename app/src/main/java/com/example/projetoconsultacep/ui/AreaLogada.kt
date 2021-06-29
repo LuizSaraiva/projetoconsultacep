@@ -3,12 +3,13 @@ package com.example.projetoconsultacep.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.projetoconsultacep.ConsultaCEP
 import com.example.projetoconsultacep.R
 import kotlinx.android.synthetic.main.activity_area_logada.*
 
 class AreaLogada : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val NAME_EXTRA = "name"
     }
 
@@ -23,10 +24,14 @@ class AreaLogada : AppCompatActivity() {
             startActivity(Intent(this, Login::class.java))
         }
 
-        btn_consulta_cep.setOnClickListener {  }
+        btn_consulta_cep.setOnClickListener {
+
+            startActivity(Intent(this, ConsultaCEP::class.java))
+
+        }
     }
 
-    private fun initComponents(){
+    private fun initComponents() {
         val nameUser = intent.getStringExtra(NAME_EXTRA)
         tv_name.setText(nameUser)
     }
