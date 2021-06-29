@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projetoconsultacep">
-        <activity android:name=".ui.AreaLogada"></activity>
+        <activity android:name=".ConsultaCEP"></activity>
+        <activity android:name=".ui.AreaLogada" />
         <activity android:name=".ui.Cadastro" />
         <activity android:name=".ui.Login">
             <intent-filter>
