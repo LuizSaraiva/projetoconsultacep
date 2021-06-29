@@ -31,7 +31,7 @@ class Login : AppCompatActivity() {
 
     lateinit var viewModel: LoginViewModel
 
-    companion object{
+    companion object {
         const val NAME_EXTRA = "name"
     }
 
@@ -53,11 +53,17 @@ class Login : AppCompatActivity() {
 
             if (validUser(userLogin.name)) {
 
-                val intent = Intent(this, AreaLogada::class.java)
-                intent.putExtra(NAME_EXTRA,userLogin.name)
-                startActivity(intent)
+                val user: User = findUser(userLogin.name)
+
+                if (user.name == userLogin.name && user.password == userLogin.password) {
+                    val intent = Intent(this, AreaLogada::class.java)
+                    intent.putExtra(NAME_EXTRA, userLogin.name)
+                    startActivity(intent)
+                } else {
+                    Snackbar.make(it, R.string.usuariosenhainvalido, Snackbar.LENGTH_LONG).show()
+                }
             } else {
-                Snackbar.make(it, "Usuario não cadastrado", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(it, R.string.usuariosenhainvalido, Snackbar.LENGTH_LONG).show()
             }
         }
 
@@ -87,6 +93,10 @@ class Login : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    private fun findUser(user: String): User {
+        return viewModel.getLogin(user)[0]
     }
 
     private fun hideKeyboard(view: View) {
